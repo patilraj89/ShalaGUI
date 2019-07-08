@@ -1,0 +1,97 @@
+<ng4-loading-spinner [threshold]="2000" [timeout]="40000" [zIndex]="9999"> </ng4-loading-spinner>
+<div class="content-wrapper">
+    <div class="row">
+      
+      <div class="col-12 grid-margin">
+        <div class="card">
+
+            <!--<div class="alert alert-success alert-dismissible fade show" role="alert" *ngIf="dataSaveStatus">
+                <strong>{{staffDataResponse}}</strong> 
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>-->
+
+          <div class="card-body">
+            <h4 class="card-title">Staff Registration</h4>
+
+            <nav class="navbar">
+              <input class="form-control" type="text" placeholder="Search Staff Here" [(ngModel)]="filter">      
+            </nav>
+            <div class="table-responsive">
+            <table class="table table-bordered table-hover">
+              <thead>
+                <tr>
+                  <!--<th>#</th>-->
+                  <th style="cursor: pointer;">Delete</th>
+                  <th style="cursor: pointer;">Edit</th>
+                  <th (click)="sort('staffId')" style="cursor: pointer;">Staff Id
+                    <span class="glyphicon sort-icon" *ngIf="key =='staffId'" [ngClass]="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                  </th>
+                  <th (click)="sort('fname')" style="cursor: pointer;">First Name
+                    <span class="glyphicon sort-icon" *ngIf="key =='fname'" [ngClass]="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                  </th>
+                  <th (click)="sort('mname')" style="cursor: pointer;">Middle Name
+                    <span class="glyphicon sort-icon" *ngIf="key =='mname'" [ngClass]="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                  </th>
+                  <th (click)="sort('lname')" style="cursor: pointer;">Last Name
+                    <span class="glyphicon sort-icon" *ngIf="key =='lname'" [ngClass]="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                  </th>
+                  <th (click)="sort('emailId')" style="cursor: pointer;">Email
+                    <span class="glyphicon sort-icon" *ngIf="key =='emailId'" [ngClass]="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                  </th>
+                  <th (click)="sort('mobileNo')" style="cursor: pointer;">Mobile No
+                    <span class="glyphicon sort-icon" *ngIf="key =='mobileNo'" [ngClass]="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                  </th>
+                  <th (click)="sort('joiningDate')" style="cursor: pointer;">Joining Date
+                    <span class="glyphicon sort-icon" *ngIf="key =='joiningDate'" [ngClass]="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                  </th>
+                  <th (click)="sort('dateOfBirth')" style="cursor: pointer;">Date Of Birth
+                    <span class="glyphicon sort-icon" *ngIf="key =='dateOfBirth'" [ngClass]="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                  </th>
+                  <th (click)="sort('gender')" style="cursor: pointer;">Gender
+                    <span class="glyphicon sort-icon" *ngIf="key =='gender'" [ngClass]="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                  </th>
+                  <th (click)="sort('education')" style="cursor: pointer;">Qualifications
+                    <span class="glyphicon sort-icon" *ngIf="key =='education'" [ngClass]="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                  </th>
+                  <th (click)="sort('address')" style="cursor: pointer;">Address
+                    <span class="glyphicon sort-icon" *ngIf="key =='address'" [ngClass]="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let staff of staffData | orderBy: key : reverse | filter:filter | paginate: { itemsPerPage: 10, currentPage: p }; let i = index">
+                  <!--<td>{{i}}</td>-->
+                  <td (click)="deleteStaff(staff.staffId)" scope="row" style="cursor: pointer;">
+                      <button type="submit" class="btn btn-link">
+                          <span class="glyphicon glyphicon-remove" style="color:red"></span>
+                      </button>
+                  </td>
+                  <td (click)="editStaff(staff)" scope="row" style="cursor: pointer;">
+                      <button type="submit" class="btn btn-link">
+                          <span class="glyphicon glyphicon-edit" style="color:blue"></span>
+                      </button>
+                  </td>
+                  <td>{{staff.staffId}}</td>
+                  <td>{{staff.fname}}</td>
+                  <td>{{staff.mname}}</td>
+                  <td>{{staff.lname}}</td>
+                  <td>{{staff.emailId}}</td>
+                  <td>{{staff.mobileNo}}</td>
+                  <td>{{staff.joiningDate}}</td>
+                  <td>{{staff.dateOfBirth}}</td>
+                  <td>{{staff.gender}}</td>
+                  <td>{{staff.education}}</td>
+                  <td>{{staff.address}}</td>
+                </tr>
+              </tbody>
+              
+            </table>
+            <pagination-controls (pageChange)="p = $event"></pagination-controls>
+          </div> 
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
