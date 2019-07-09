@@ -14570,7 +14570,7 @@ pre {
   .card-weather .card-body {
     background: #ffffff; }
     .card-weather .card-body:first-child {
-      /* background: url("../images/samples/weather.svg") no-repeat center; */
+      /* background: url("assets/images/samples/weather.svg") no-repeat center; */
       background-size: cover; }
   .card-weather .weather-date-location {
     padding: 0 0 38px; }
@@ -16105,11 +16105,11 @@ ul {
 /* === Landing screens === */
 /* Auth */
 .auth.auth-bg-1 {
-  /* background: url("../images/auth/login_1.jpg"); */
+  /* background: url("assets/images/auth/login_1.jpg"); */
   background-size: cover; }
 
 .auth.register-bg-1 {
-  /* background: url("../images/auth/register.jpg") center center no-repeat; */
+  background: url("assets/images/auth/register.jpg") center center no-repeat;
   background-size: cover; }
 
 .auth.theme-one .auto-form-wrapper {
@@ -16279,10 +16279,10 @@ ul {
   .auth.theme-two .banner-section .slide-content {
     width: 100%; }
     .auth.theme-two .banner-section .slide-content.bg-1 {
-      /* background: url("../images/auth/login_2.jpg") no-repeat center center; */
+      /* background: url("assets/images/auth/login_2.jpg") no-repeat center center; */
       background-size: cover; }
     .auth.theme-two .banner-section .slide-content.bg-2 {
-      /* background: url("../images/auth/register_2.jpg") no-repeat center center; */
+      background: url("assets/images/auth/register_2.jpg") no-repeat center center;
       background-size: cover; }
 
 /* Error */

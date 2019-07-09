@@ -14,14 +14,22 @@ import { AgGridModule } from 'ag-grid-angular';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { Ng2OrderModule } from 'ng2-order-pipe';
 import {NgxPaginationModule} from 'ngx-pagination';
-
+import {LoginModule} from './login/login.module';
+import { SidenavComponent } from './sidenav/sidenav.component';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
+import { MainPageComponent } from './main-page/main-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
     StaffRegistration,
-    ViewStaff
+    ViewStaff,
+    SidenavComponent,
+    HeaderComponent,
+    FooterComponent,
+    MainPageComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +41,8 @@ import {NgxPaginationModule} from 'ngx-pagination';
     AgGridModule.withComponents([]),
     Ng2SearchPipeModule,
     Ng2OrderModule,
-    NgxPaginationModule
+	NgxPaginationModule,
+	LoginModule
    
   ],
   providers: [HostConfigService,ResourcesService],
