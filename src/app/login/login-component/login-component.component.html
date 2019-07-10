@@ -5,31 +5,38 @@
           <div class="row w-100">
             <div class="col-lg-4 mx-auto">
               <div class="auto-form-wrapper">
-                <form action="#">
+                <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
                   <div class="form-group">
                     <label class="label">Username</label>
                     <div class="input-group">
-                      <input type="text" class="form-control" placeholder="Username">
+                      <input type="text" class="form-control" placeholder="Username" formControlName="uname" [ngClass]="{ 'is-invalid': submitted && f.uname.errors }">
                       <div class="input-group-append">
                         <span class="input-group-text">
                           <i class="mdi mdi-check-circle-outline"></i>
                         </span>
-                      </div>
-                    </div>
+					  </div>					  
+					</div>
+					<div *ngIf="submitted && f.uname.errors" class="alert alert-warning">
+            			<div *ngIf="f.uname.errors.required">User name should not be blank</div>            			
+        			</div>
                   </div>
                   <div class="form-group">
                     <label class="label">Password</label>
                     <div class="input-group">
-                      <input type="password" class="form-control" placeholder="password">
+                      <input type="password" class="form-control" placeholder="password" formControlName='passwd'>
                       <div class="input-group-append">
                         <span class="input-group-text">
                           <i class="mdi mdi-check-circle-outline"></i>
                         </span>
-                      </div>
-                    </div>
+					  </div>					  
+					</div>
+					<div *ngIf="submitted && f.passwd.errors" class="alert alert-warning">
+            			<div *ngIf="f.passwd.errors.required">Password Should not be blank</div>
+            			<div *ngIf="f.passwd.errors.minlength">Password must be at least 6 characters</div>
+        			</div>
                   </div>
                   <div class="form-group">
-                    <button class="btn btn-primary submit-btn btn-block">Login</button>
+                    <button type="submit" class="btn btn-primary submit-btn btn-block" [disabled]="loading">Login</button>
                   </div>
                   <div class="form-group d-flex justify-content-between">
                     <div class="form-check form-check-flat mt-0">
@@ -59,7 +66,7 @@
                   <a href="#">Terms</a>
                 </li>
               </ul>
-              <p class="footer-text text-center">copyright © 2018 Bootstrapdash. All rights reserved.</p>
+              <p class="footer-text text-center">copyright © 2018 prdrek. All rights reserved.</p>
             </div>
           </div>
         </div>
