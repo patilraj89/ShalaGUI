@@ -3,25 +3,22 @@ import { NgModule } from '@angular/core';
 import {HttpModule} from '@angular/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { DashboardComponent } from './Dashboard/dash.component';
-import { StaffRegistration } from './StaffRegistration/staffRegister.component';
 import { HostConfigService } from './host-config-srvice/host-config-service';
 import {ResourcesService} from './ResourcesService/resources-service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
-import {ViewStaff} from './ViewStaff/viewStaff.component';
 import { AgGridModule } from 'ag-grid-angular';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { Ng2OrderModule } from 'ng2-order-pipe';
 import {NgxPaginationModule} from 'ngx-pagination';
+import {LoginModule} from './login-module/login.module'
+import {MainPageModule} from './main-page-module/main-page-module';
+
 
 
 @NgModule({
   declarations: [
-    AppComponent,
-    DashboardComponent,
-    StaffRegistration,
-    ViewStaff
+    AppComponent,   
   ],
   imports: [
     BrowserModule,
@@ -33,7 +30,9 @@ import {NgxPaginationModule} from 'ngx-pagination';
     AgGridModule.withComponents([]),
     Ng2SearchPipeModule,
     Ng2OrderModule,
-    NgxPaginationModule
+	NgxPaginationModule,
+	LoginModule,
+	MainPageModule
    
   ],
   providers: [HostConfigService,ResourcesService],
