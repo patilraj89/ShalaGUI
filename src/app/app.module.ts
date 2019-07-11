@@ -13,17 +13,12 @@ import { Ng2OrderModule } from 'ng2-order-pipe';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {LoginModule} from './login-module/login.module'
 import {MainPageModule} from './main-page-module/main-page-module';
-import { SidenavComponent } from './sidenav/sidenav.component';
-import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component';
+
 
 
 @NgModule({
   declarations: [
-    AppComponent,
-    SidenavComponent,
-    HeaderComponent,
-    FooterComponent,   
+    AppComponent,   
   ],
   imports: [
     BrowserModule,
