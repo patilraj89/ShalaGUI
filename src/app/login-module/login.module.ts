@@ -4,12 +4,14 @@ import { LoginComponentComponent } from './login-component/login-component.compo
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { AppRoutingModule } from '../app-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
 @NgModule({
   declarations: [LoginComponentComponent, ForgotPasswordComponent],
   imports: [
 	CommonModule,
 	AppRoutingModule,
-	ReactiveFormsModule
+	ReactiveFormsModule,
+	Ng4LoadingSpinnerModule.forRoot(),
   ]
 })
 export class LoginModule { }
