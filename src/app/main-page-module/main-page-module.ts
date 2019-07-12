@@ -7,6 +7,8 @@ import {StaffRegistration} from './staffReg/staffregister.component';
 import {ViewStaff} from './ViewStaff/viewStaff.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
+import {HttpClientService} from '../Authentication/service/httpclient.service';
+import {AuthenticationService} from '../Authentication/service/authentication.service';
 @NgModule({
   declarations: [
 	  MainPageComponent,
@@ -19,6 +21,7 @@ import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
 	AppRoutingModule,
 	ReactiveFormsModule,
 	Ng4LoadingSpinnerModule.forRoot(),
-  ]
+  ],
+  providers:[HttpClientService,AuthenticationService]
 })
 export class MainPageModule { }

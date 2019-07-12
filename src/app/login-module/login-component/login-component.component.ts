@@ -6,6 +6,7 @@ import {AppSetting} from '../../AppSetting/AppSetting';
 import {Resources} from '../../Resources/Resources';
 import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 import { Router} from '@angular/router';
+import {AuthenticationService} from  '../../Authentication/service/authentication.service';
 @Component({
   selector: 'app-login-component',
   templateUrl: './login-component.component.html',
@@ -16,9 +17,19 @@ export class LoginComponentComponent implements OnInit {
 	hostAddress:string='';
     loginForm: FormGroup;
     submitted = false;
-    result: any = null;
-  constructor(private hostAddr:HostConfigService,private formBuilder: FormBuilder,private router:Router,private resourceService:ResourcesService,
-        private spinnerService: Ng4LoadingSpinnerService) { }
+	result: any = null;
+	
+	  username = ''
+	  password = ''
+	  invalidLogin = false
+  constructor(
+	  private hostAddr:HostConfigService,
+	  private formBuilder: FormBuilder,
+	  private router:Router,
+	  private resourceService:ResourcesService,
+	  private spinnerService: Ng4LoadingSpinnerService,
+	  private loginservice: AuthenticationService
+	  ) { }
 
   ngOnInit() {
 	  this.loginForm = this.formBuilder.group({
@@ -43,17 +54,28 @@ export class LoginComponentComponent implements OnInit {
         if (this.loginForm.invalid) {
             return;
         }else{
-			var uname=this.loginForm.controls['uname'].value;
-			var pass=this.loginForm.controls['passwd'].value;
-			if(uname==='abc@abc.com' && pass==='admin123'){
-				this.router.navigate(['/mpage']);
-			}
+			// var uname=this.loginForm.controls['uname'].value;
+			// var pass=this.loginForm.controls['passwd'].value;
+			// if(uname==='abc@abc.com' && pass==='admin123'){
+			// 	this.router.navigate(['/mpage']);
+			// }
 			
+			this.username=this.loginForm.controls['uname'].value;
+			this.password=this.loginForm.controls['passwd'].value;
+			// console.log(this.loginForm.value);
+			(this.loginservice.authenticate(this.username, this.password).subscribe(
+      			data => {
+        		this.router.navigate(['mpage'])
+        		this.invalidLogin = false
+      			},
+      			error => {
+        		this.invalidLogin = true
+
+      		}));
 			
-			console.log(this.loginForm.value);
 		}
 
-        alert('SUCCESS!! :-)')
+        //alert('SUCCESS!! :-)')
     }
 
 }

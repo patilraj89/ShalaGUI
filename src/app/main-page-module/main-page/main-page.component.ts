@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClientService, Employee } from '../../Authentication/service/httpclient.service';
 
 @Component({
   selector: 'app-main-page',
@@ -7,7 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainPageComponent implements OnInit {
 
-  constructor() { }
+	employees:Employee[];
+  constructor(
+	  private httpClientService:HttpClientService
+  ) { }
 
   ngOnInit() {
   }
