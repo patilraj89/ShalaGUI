@@ -17,12 +17,12 @@ export class ViewStaff implements OnInit{
         private spinnerService: Ng4LoadingSpinnerService){}
 
     ngOnInit(){
-        this.spinnerService.show();
+       // this.spinnerService.show();
 
         this.resourceService.getStaffDetails(AppSetting.API_HOST_ADDRESS+''+Resources.GET_STAFF).subscribe((res)=>{
             this.staffData=res.json();
             console.log(this.staffData);
-            this.spinnerService.hide();
+           // this.spinnerService.hide();
         })
     }    
     

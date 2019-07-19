@@ -11,22 +11,22 @@ import { AgGridModule } from 'ag-grid-angular';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { Ng2OrderModule } from 'ng2-order-pipe';
 import {NgxPaginationModule} from 'ngx-pagination';
-import {LoginModule} from './login-module/login.module'
+import { LoginModule } from './login-module/login.module';
 import {MainPageModule} from './main-page-module/main-page-module';
 import { HttpClientModule } from '@angular/common/http';
-
+import { LoginDataShareService } from './login-module/login-data-share-service/login-data-service';
 @NgModule({
   declarations: [
-    AppComponent,   
+    AppComponent
   ],
   imports: [
     BrowserModule,
-	AppRoutingModule,
-	HttpClientModule,
+     AppRoutingModule,
+    HttpClientModule,
     HttpModule,
     FormsModule,
     ReactiveFormsModule,
-    Ng4LoadingSpinnerModule.forRoot(),
+    Ng4LoadingSpinnerModule.forRoot(),     
     AgGridModule.withComponents([]),
     Ng2SearchPipeModule,
     Ng2OrderModule,
@@ -35,7 +35,7 @@ import { HttpClientModule } from '@angular/common/http';
 	MainPageModule
    
   ],
-  providers: [HostConfigService,ResourcesService],
+  providers: [HostConfigService,ResourcesService,LoginDataShareService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

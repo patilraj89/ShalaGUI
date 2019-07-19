@@ -19,18 +19,21 @@
 		<div class="navbar-menu-wrapper d-flex align-items-center">
 			<ul class="navbar-nav navbar-nav-left header-links d-none d-md-flex">
 				<li class="nav-item">
-					<a href="#" class="nav-link">Schedule
+					<!-- <a href="#" class="nav-link">Schedule
 						<span class="badge badge-primary ml-1">New</span>
-					</a>
+                    </a> -->
+                    <p style="color:white;font-size:20px;">
+                    <strong><marquee DIRECTION="LEFT" SCROLLDELAY="150">Chirai Mata Madhyamic Vidyalay Talwade Bu</marquee></strong>
+                    </p>
 				</li>
-				<li class="nav-item active">
+				<!-- <li class="nav-item active">
 					<a href="#" class="nav-link">
 						<i class="mdi mdi-elevation-rise"></i>Reports</a>
 				</li>
 				<li class="nav-item">
 					<a href="#" class="nav-link">
 						<i class="mdi mdi-bookmark-plus-outline"></i>Score</a>
-				</li>
+				</li> -->
 			</ul>
 			<ul class="navbar-nav navbar-nav-right">
 				<li class="nav-item dropdown">
@@ -177,7 +180,7 @@
 						<a class="dropdown-item">
 							Check Inbox
 						</a>
-						<a class="dropdown-item">
+						<a class="dropdown-item" (click)="signout()" style="cursor: pointer">
 							Sign Out
 						</a>
 					</div>

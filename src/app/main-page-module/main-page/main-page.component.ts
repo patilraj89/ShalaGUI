@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClientService, Employee } from '../../Authentication/service/httpclient.service';
+import {AuthenticationService} from '../../Authentication/service/authentication.service';
+import { Router } from '@angular/router';
+import { LoginDataShareService } from '../../login-module/login-data-share-service/login-data-service';
 
 @Component({
   selector: 'app-main-page',
@@ -8,12 +10,31 @@ import { HttpClientService, Employee } from '../../Authentication/service/httpcl
 })
 export class MainPageComponent implements OnInit {
 
-	employees:Employee[];
-  constructor(
-	  private httpClientService:HttpClientService
-  ) { }
+        lgData = {};
+            constructor(
+                private authentication: AuthenticationService,
+                private router: Router,
+                private loginData: LoginDataShareService,
+                
+            ) { }
 
   ngOnInit() {
+      //this.lgData = this.loginData.getLgData();
+      const dt = sessionStorage.getItem('username');
+      const tk = sessionStorage.getItem('tkn');      
+      console.log('User Name=', dt);
+      console.log('User Name=', tk);
+      
+
+
+}
+
+      
+  
+
+  signout() {
+    this.authentication.logOut();
+    this.router.navigate(['login']);
   }
 
 }

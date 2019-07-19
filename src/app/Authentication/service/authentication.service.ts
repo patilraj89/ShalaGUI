@@ -1,45 +1,54 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { map } from 'rxjs/operators';
+import { HttpClient , HttpHeaders } from '@angular/common/http';
+import { map , catchError} from 'rxjs/operators';
+import { Observable, throwError } from 'rxjs';
+import { HostConfigService } from '../../host-config-srvice/host-config-service';
+export class User {
+    constructor(
+        public status: string,
+    ) { }
 
-export class User{
-  constructor(
-    public status:string,
-     ) {}
-  
 }
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class AuthenticationService {
 
-  constructor(
-    private httpClient:HttpClient
-  ) { 
-     }
+     constructor(
+        private httpClient: HttpClient,
+        private host: HostConfigService
+    ) { }
 
-     authenticate(username, password) {
-      const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(username + ':' + password) });
-      return this.httpClient.get<User>('http://localhost:8080/employees/validateLogin',{headers}).pipe(
-       map(
-         userData => {
-          sessionStorage.setItem('username',username);
-          return userData;
-         }
-       )
-  
-      );
+    authenticate(username: string, password: string) {
+
+        const httpOptions = {
+        headers: new HttpHeaders({
+            'Content-Type':  'application/json',
+        })
+    };
+       const udetails  = {'username' : username , 'password' : password};
+       //console.log('Details=', udetails);
+        return this.httpClient.post(this.host.hostAddress() + 'token', udetails , httpOptions).pipe(
+            map(
+                userData => {
+                    return userData;
+                }
+            )
+
+        );
     }
-  
 
-  isUserLoggedIn() {
-    let user = sessionStorage.getItem('username')
-    console.log(!(user === null))
-    return !(user === null)
-  }
 
-  logOut() {
-    sessionStorage.removeItem('username')
-  }
+    isUserLoggedIn() {
+        const user = sessionStorage.getItem('username');
+        const tkn = sessionStorage.getItem('tkn');
+        console.log(!(user === null));
+        return !(user === null && tkn === null);
+    }
+
+    logOut() {
+        sessionStorage.removeItem('username');
+        sessionStorage.removeItem('tkn');
+    }
 }

@@ -1,13 +1,13 @@
 import {Injectable} from '@angular/core';
 @Injectable({
-    providedIn:'root',
+    providedIn: 'root',
 })
 
-export class HostConfigService{
+export class HostConfigService {
 
-    constructor(){}
+    constructor() {}
 
-    hostAddress(){
+    hostAddress() {
         return 'http://localhost:8080/';
     }
 
